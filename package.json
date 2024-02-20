@@ -6,12 +6,17 @@
   "scripts": {
     "server": "nodemon --watch backend backend/server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install:backend": "cd backend && npm install",
+    "install:client": "cd client && npm install",
+    "setup": "npm run install:backend && npm run install:client",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "eslint-plugin-react": "^7.33.2"
   }
 }
