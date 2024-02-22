@@ -1,6 +1,30 @@
+import MenuBar from './components/MenuBar.js';
+import UserCard from './components/UserCard.js';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Box, Grid } from '@mui/material';
+import './styles/App.css';
+
 const App = () => {
-  const moi = { moi };
-  return <></>;
+  return (
+    <>
+      <Box>
+        <MenuBar />
+      </Box>
+      <Grid container alignItems="center" justifyContent="center" style={{ marginTop: '50px' }}>
+        <Grid item width="40%">
+          <UserCard />
+        </Grid>
+      </Grid>
+      <Grid id="matchButtons" container spacing={2} alignItems="center" justifyContent="center">
+        <Grid item justifyContent="center" alignItems="center">
+          <FavoriteBorderIcon id="disLikeButton" />
+        </Grid>
+        <Grid item>
+          <FavoriteBorderIcon id="likeButton" />
+        </Grid>
+      </Grid>
+    </>
+  );
 };
 
 export default App;
