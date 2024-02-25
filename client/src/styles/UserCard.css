@@ -1,6 +1,6 @@
 #userCard {
   border-radius: 10px;
-  box-shadow: 1px 1px 5px 3px #fb4444;
+  box-shadow: 1px 1px 5px 3px #ff8686;
 }
 
 #userCardTitle {
@@ -14,7 +14,6 @@
 }
 
 #userCardContent {
-  background-color: #fdc7c7;
   border-radius: '0px 0px 10px 10px';
   padding: 15px;
 }

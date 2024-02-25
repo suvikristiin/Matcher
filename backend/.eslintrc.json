@@ -15,7 +15,10 @@
     "node" 
   ],
   "rules": {
-    "no-unused-vars": "warn", 
-    "no-console": "off"
+    "no-console": "off",
+    "node/no-unsupported-features/es-syntax": [
+      "error",
+      { "ignores": ["modules"] }
+    ]
   }
 }
