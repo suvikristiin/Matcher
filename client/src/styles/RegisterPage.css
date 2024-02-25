@@ -50,19 +50,32 @@
   margin-bottom: 35px;
 }
 
-#username {
+#usernameRegister {
   width: 220px;
 }
 
-#password {
+#passwordRegister {
   width: 220px;
 }
 
-#email {
+#emailRegister {
   width: 220px;
 }
 
 span {
   font-family: 'Dancing Script', cursive;
   font-size: 62px;
+}
+
+#registerErrorMessage {
+  color: red;
+  padding: 0px;
+}
+
+.customTextField .MuiInputLabel-root.Mui-focused {
+  color: #fb4444;
+}
+
+.customTextField .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #fdc7c7;
 }

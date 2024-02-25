@@ -62,3 +62,11 @@ span {
   font-family: 'Dancing Script', cursive;
   font-size: 62px;
 }
+
+.customTextField .MuiInputLabel-root.Mui-focused {
+  color: #fb4444;
+}
+
+.customTextField .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #fdc7c7;
+}

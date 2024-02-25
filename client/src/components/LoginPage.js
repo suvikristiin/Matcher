@@ -1,19 +1,9 @@
 import { Grid, TextField, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import '../styles/LoginPage.css';
 
 const LoginPage = () => {
-  const CustomTextField = styled(TextField)({
-    '& label.Mui-focused': {
-      color: '#fb4444',
-    },
-    '& .MuiOutlinedInput-root': {
-      '&.Mui-focused fieldset': {
-        borderColor: '#fdc7c7',
-      },
-    },
-  });
+  
 
   return (
     <Grid container spacing={2}>
@@ -23,9 +13,9 @@ const LoginPage = () => {
       <Grid item id="loginFormGrid">
         <form id="loginForm">
           <Typography id="loginTitle">Log in to the <span>Matcher...</span></Typography>
-          <CustomTextField id="username" label="Username" margin="normal" ></CustomTextField>
+          <TextField className='customTextField' id="username" label="Username" margin="normal" ></TextField>
 
-          <CustomTextField id="password" label="Password" margin="normal"></CustomTextField>
+          <TextField className='customTextField' id="password" label="Password" margin="normal"></TextField>
           <Button id="loginButton" variant="contained" size="large">
             Log in
           </Button>
