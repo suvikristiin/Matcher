@@ -63,6 +63,11 @@ span {
   font-size: 62px;
 }
 
+#loginErrorMessage {
+  color: red;
+  padding: 0px;
+}
+
 .customTextField .MuiInputLabel-root.Mui-focused {
   color: #fb4444;
 }

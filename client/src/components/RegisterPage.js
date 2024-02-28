@@ -18,7 +18,7 @@ const RegisterPage = () => {
     setRegisterData({ ...registerData, [event.target.name]: event.target.value });
   };
 
-  // Handler fuction for form Submission
+  // Handler fuction for form submission
   const handleRegistrationSubmit = async (event) => {
     event.preventDefault();
 
