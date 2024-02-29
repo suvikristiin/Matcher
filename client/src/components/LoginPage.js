@@ -37,9 +37,8 @@ const LoginPage = () => {
       if (responseLogin.status === 200) {
         // Store the authentication token in localStorage
         localStorage.setItem('auth_token', responseJson.token);
-        window.location.href = '/';
         // If login is successful, redirect to the home page
-        window.location.href = '/';
+        window.location.href = '/home';
       } else {
         // If login fails, set an error message to the state
         setErrorMessage(responseJson.message || 'Login failed. Please try again.');
