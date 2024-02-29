@@ -1,7 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import indexRouter from './routes/index.js';
+import homeRouter from './routes/home.js';
 import mongoose from 'mongoose';
+import passport from 'passport';
+import './passport-config.js';
 
 const app = express();
 dotenv.config();
@@ -14,8 +17,11 @@ db.on('error', () => {
   console.error('MongoDB error');
 });
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.json());
 app.use('/', indexRouter);
+// Protect by JWT authentication via passport on the "/home" router
+app.use('/home', passport.authenticate('jwt', { session: false }), homeRouter);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

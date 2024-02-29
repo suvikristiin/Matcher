@@ -2,6 +2,8 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
 import validator from 'validator';
+import jwt from 'jsonwebtoken';
+
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
@@ -49,6 +51,41 @@ router.post('/register', async (req, res) => {
     } else {
       return res.status(500).json({ message: 'Server error.' });
     }
+  }
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    // Attempt to find a user in the database by username
+    const foundUser = await User.findOne({ username: req.body.username });
+
+    // If user is not found, return a 401 Unauthorized response with a message
+    if (!foundUser) {
+      return res.status(401).json({ message: 'Login failed: Incorrect username or password' });
+    }
+
+    // Compare the provided password with the hashed password stored in the database
+    const isCorrectPassword = await bcrypt.compare(req.body.password, foundUser.password);
+
+    // If the password is correct, proceed to generate a JWT
+    if (isCorrectPassword) {
+      const jwtPayload = {
+        id: foundUser._id,
+        email: foundUser.email,
+        username: foundUser.username,
+      };
+
+      // Sign the JWT with the secret key and set it to expire in 1 hour
+      const token = jwt.sign(jwtPayload, process.env.SECRET, { expiresIn: '1h' });
+
+      // Return response with the generated token
+      return res.status(200).json({ success: true, token });
+    } else {
+      // If the password is incorrect, return a error response with a message
+      return res.status(401).json({ message: 'Login failed: Incorrect username or password' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Server error' });
   }
 });
 
