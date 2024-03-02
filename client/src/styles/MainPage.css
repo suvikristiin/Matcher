@@ -5,17 +5,3 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-#disLikeButton {
-  width: 100px;
-  height: 100px;
-}
-
-#likeButton {
-  width: 100px;
-  height: 100px;
-  color: #fb4444;
-}
-
-#matchButtons {
-  margin-top: 20px;
-}

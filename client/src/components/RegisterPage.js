@@ -33,16 +33,15 @@ const RegisterPage = () => {
         mode: 'cors',
       });
       const responseJson = await responseRegister.json();
-
-      if (responseRegister.status === 201) {
-        // If registration is successful, redirect to the login page
-        window.location.href = '/login';
-      } else {
-        // If registration fails, set an error message to the state
-        setErrorMessage(responseJson.message || 'Registration failed. Please try again.');
+      if (!responseRegister.ok) {
+        throw new Error(responseJson.message || 'Registration failed. Please try again.');
       }
+
+      // If registration is successful, redirect to the login page
+      window.location.href = '/login';
     } catch (error) {
       console.log('error', error);
+      setErrorMessage(error.message);
     }
   };
 
