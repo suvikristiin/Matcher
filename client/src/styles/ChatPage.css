@@ -1,0 +1,38 @@
+#matchesList {
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 3px #ff8686;
+
+  min-height: 100px;
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 50px;
+  padding: 0px;
+  background-color: #fdc7c7;
+}
+
+#userChatLink {
+  border: solid 2px #ff8686;
+  margin: 0px;
+  padding: 10px 5px 10px 5px;
+  font-size: 22px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+#userChatLink:hover {
+  background-color: #ff8686;
+  color: #ffffff;
+}
+
+#chatWindow {
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 3px #ff8686;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+#selectChat-info {
+  color: #fb4444;
+  font-size: 20px;
+}

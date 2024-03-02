@@ -29,6 +29,14 @@ const DropDownMenu = () => {
     window.location.href = '/login';
   };
 
+  const handleChats = () => {
+    window.location.href = '/chats';
+  };
+
+  const handleMainPage = () => {
+    window.location.href = '/home';
+  };
+
   return (
     <>
       <Button
@@ -41,9 +49,10 @@ const DropDownMenu = () => {
         Menu
       </Button>
       <Menu id="menuList" onClose={handleClose} open={open} anchorEl={anchorEl}>
+        <MenuItem onClick={handleMainPage}>Main page</MenuItem>
         <MenuItem>Edit your information</MenuItem>
         <MenuItem>Add new image</MenuItem>
-        <MenuItem>List your chats</MenuItem>
+        <MenuItem onClick={handleChats}>Chats</MenuItem>
         <MenuItem id="LogOutButton" onClick={handleLogout}>
           Log out
         </MenuItem>
