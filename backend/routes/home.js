@@ -51,13 +51,25 @@ router.post('/rate', async (req, res) => {
   try {
     // Find the authenticated user and the user to be rated in the database
     const authUser = await User.findById(authUserId);
-    const likedUserExists = await User.findById(likedUserId);
-    if (!likedUserExists) {
+    const likedUser = await User.findById(likedUserId);
+    if (!likedUser) {
       return res.status(404).send('Liked user not found.');
     }
 
     // Based on the 'like' boolean, add the liked user's ID to the correct array
-    like ? authUser.likes.push(req.body.likedUserId) : authUser.dislikes.push(req.body.likedUserId);
+    if (like) {
+      // Add the liked user's ID to the authenticating user's likes array
+      authUser.likes.push(likedUserId);
+
+      // Check if the liked user has also liked the authenticating user
+      if (likedUser.likes.includes(authUserId)) {
+        authUser.matches.push(likedUserId);
+        likedUser.matches.push(authUserId);
+      }
+    } else {
+      // If not a like, add id to the dislikes array
+      authUser.dislikes.push(likedUserId);
+    }
 
     authUser.save();
     res.status(200).send();

@@ -23,10 +23,13 @@ const UserCard = () => {
       });
 
       if (response.status == 404) {
+        localStorage.removeItem('auth_token');
         window.location.href = '/login';
       } else if (response.status == 204) {
         setNoMoreUsers(true);
       } else if (!response.ok) {
+        console.log(response);
+        console.log(response.status);
         throw new Error('Failed to fetch a new user.');
       } else {
         const responseJson = await response.json();
@@ -54,8 +57,9 @@ const UserCard = () => {
         },
         body: JSON.stringify({ likedUserId: randomUserData._id, like }),
       });
-
+      console.log(response);
       if (response.status == 401) {
+        localStorage.removeItem('auth_token');
         window.location.href = '/login';
       } else if (!response.ok) {
         throw new Error('Failed to rate the user!');
