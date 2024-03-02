@@ -1,9 +1,13 @@
 #userCard {
   border-radius: 10px;
   box-shadow: 1px 1px 5px 3px #ff8686;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#userCardTitle {
+#userCardHeading {
   width: 100%;
   height: 100%;
   padding-top: 10px;
@@ -13,7 +17,56 @@
   padding: 15px;
 }
 
+#userCardTitle {
+  margin: 0px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
 #userCardContent {
   border-radius: '0px 0px 10px 10px';
   padding: 15px;
+}
+
+#disLikeButton {
+  width: 100px;
+  height: 100px;
+}
+
+#likeButton {
+  width: 100px;
+  height: 100px;
+  color: #fb4444;
+}
+
+#matchButtons {
+  margin-top: 20px;
+}
+
+#userCard-noUsers {
+  height: 40vh;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#noUsers-infoText {
+  font-size: 38px;
+}
+
+#errorRateMessage {
+  color: #fb4444;
+}
+
+#userCard-errorFetch {
+  display: flex;                                                   
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#errorFetch-infoText {
+  height: 40vh;
+  font-size: 38px;
 }

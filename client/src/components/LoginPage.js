@@ -33,18 +33,19 @@ const LoginPage = () => {
         mode: 'cors',
       });
       const responseJson = await responseLogin.json();
-      console.log(responseJson);
-      if (responseLogin.status === 200) {
+      if (!responseLogin.ok) {
+        throw new Error(responseJson.message || 'Login failed. Please try again.'); 
+      }
+      
+   
         // Store the authentication token in localStorage
         localStorage.setItem('auth_token', responseJson.token);
         // If login is successful, redirect to the home page
         window.location.href = '/home';
-      } else {
-        // If login fails, set an error message to the state
-        setErrorMessage(responseJson.message || 'Login failed. Please try again.');
-      }
+      
     } catch (error) {
       console.log('error', error);
+      setErrorMessage(error.message)
     }
   };
 

@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
+// user registration and storage in the database
 router.post('/register', async (req, res) => {
   const { email, username, password } = req.body;
 
@@ -54,6 +55,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// user login
 router.post('/login', async (req, res) => {
   try {
     // Attempt to find a user in the database by username
