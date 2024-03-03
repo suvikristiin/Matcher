@@ -9,7 +9,7 @@ Clone the repository and navigate to the project directory
 git clone https://github.com/suvikristiin/matcher.git
 ```
 
-Create .env file in the root folder of the project and add SECRET as SECRET=<secret key>
+Create .env file in the root folder of the project and add SECRET as `SECRET=<my secret key>`
 
 Then install the required dependencies by running:
 ```
