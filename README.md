@@ -11,8 +11,9 @@ git clone https://github.com/suvikristiin/matcher.git
 
 Create .env file in the root folder of the project and add SECRET as `SECRET=<my secret key>`
 
-Then install the required dependencies by running:
+Then install the required dependencies by running in the root folder:
 ```
+npm install
 npm run setup
 ```
 
