@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Grid, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import MenuBar from './MenuBar.js';
 import Chat from './Chat.js';
 import '../styles/ChatPage.css';
@@ -7,9 +7,11 @@ import '../styles/ChatPage.css';
 const ChatPage = () => {
   const [matches, setMatches] = useState([{}]);
   const [selectedMatch, setSelectedMatch] = useState();
+  const [selectedMatchId, setSelectedMatchId] = useState(null);
 
   const auth_token = localStorage.getItem('auth_token');
 
+   // Fetches matches for the authenticated user
   const fetchMatches = useCallback(async () => {
     try {
       const response = await fetch('/chats/matches', {
@@ -26,6 +28,7 @@ const ChatPage = () => {
         throw new Error('Failed to fetch a matches.');
       } else {
         const responseJson = await response.json();
+        console.log('matchit', responseJson);
         setMatches(responseJson.matchesUserData);
       }
     } catch (error) {
@@ -37,7 +40,9 @@ const ChatPage = () => {
     fetchMatches();
   }, [fetchMatches]);
 
+    // Handles selecting a chat by updating state with the selected match
   const handleSelectedChat = (match) => {
+    setSelectedMatchId(match._id);
     setSelectedMatch(match);
   };
 
@@ -46,22 +51,34 @@ const ChatPage = () => {
       <Box>
         <MenuBar />
       </Box>
-      <Grid container spacing={2}>
-        <Grid item xs={4} id="matchesList">
-          {matches.map((match, index) => (
-            <p id="userChatLink" key={index} onClick={() => handleSelectedChat(match)}>
-              {match.username}
-            </p>
-          ))}
-        </Grid>
-        <Grid item xs={6} id="chatWindow">
+      <Box id="chatPageContent">
+        <Box id="matchesList">
+          {matches.length > 0 ? (
+            matches.map((match, index) => (
+              <p
+                id="userChatLink"
+                className={
+                  selectedMatchId === match._id ? 'selectedColor clicked' : 'selectedColor'
+                }
+                key={index}
+                onClick={() => handleSelectedChat(match)}
+              >
+                {match.username}
+              </p>
+            ))
+          ) : (
+            <p id="noMatches">No matches...</p>
+          )}
+        </Box>
+
+        <Box id="chatWindow">
           {selectedMatch ? (
-            <Chat />
+            <Chat selectedMatch={selectedMatch} />
           ) : (
             <p id="selectChat-info">Please select a chat to start messaging...</p>
           )}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </>
   );
 };

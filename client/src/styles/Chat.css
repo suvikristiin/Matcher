@@ -1,0 +1,34 @@
+#submitMessage {
+  background-color: #fdc7c7;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#messages {
+  margin: 10px;
+}
+
+#newMessageGrid {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+#newMessageForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 50%;
+}
+
+#inputMessage {
+  flex-grow: 1;
+  margin-right: 8px;
+  width: 100%;
+}
+
+.inputMessage .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: hsl(0, 0%, 92%);
+}

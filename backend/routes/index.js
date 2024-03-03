@@ -73,12 +73,11 @@ router.post('/login', async (req, res) => {
     if (isCorrectPassword) {
       const jwtPayload = {
         id: foundUser._id,
-        email: foundUser.email,
         username: foundUser.username,
       };
 
       // Sign the JWT with the secret key and set it to expire in 1 hour
-      const token = jwt.sign(jwtPayload, process.env.SECRET, { expiresIn: '1h' });
+      const token = jwt.sign(jwtPayload, process.env.SECRET, { expiresIn: '24h' });
 
       // Return response with the generated token
       return res.status(200).json({ success: true, token });

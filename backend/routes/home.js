@@ -72,6 +72,7 @@ router.post('/rate', async (req, res) => {
     }
 
     authUser.save();
+    likedUser.save();
     res.status(200).send();
   } catch (error) {
     res.status(500).send('Server error');
