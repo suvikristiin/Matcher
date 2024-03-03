@@ -1,7 +1,6 @@
 #matchesList {
   border-radius: 10px;
   box-shadow: 1px 1px 5px 3px #ff8686;
-  width: 30%;
   min-height: 50px;
   text-align: center;
   margin-top: 50px;
@@ -37,7 +36,6 @@
   margin-top: 50px;
   margin-left: 50px;
   overflow-y: auto;
-  width: 70%;
 }
 
 .selectedColor.clicked {
@@ -51,4 +49,40 @@
 
 #noMatches {
   color: #ffffff;
+}
+
+@media (min-width: 800px) {
+  #chatPageContent {
+    flex-direction: row;
+  }
+
+  #matchesList {
+    width: 30%;
+  }
+
+  #chatWindow {
+    width: 70%;
+  }
+}
+
+@media (max-width: 799px) {
+  #chatPageContent {
+    flex-direction: column;
+  }
+
+  #matchesList {
+    width: 50%;
+  }
+
+  #chatWindow {
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  #matchesList {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 80%;
+  }
 }

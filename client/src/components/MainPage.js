@@ -39,7 +39,7 @@ const MainPage = () => {
         <MenuBar />
       </Box>
       <Grid container alignItems="center" justifyContent="center" style={{ marginTop: '50px' }}>
-        <Grid item width="30%">
+        <Grid item xs={12} sm={6} md={4} lg={4}>
           <UserCard />
         </Grid>
       </Grid>

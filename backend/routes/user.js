@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
+import validator from 'validator';
 
 // Route to get the user's profile data
 router.get('/profile', async (req, res) => {
@@ -36,6 +37,18 @@ router.post('/update', async (req, res) => {
     };
 
     if (req.body.password) {
+      if (
+        !validator.isStrongPassword(req.body.password, {
+          minLength: 8,
+          minLowercase: 1,
+          minUppercase: 1,
+          minNumbers: 1,
+          minSymbols: 1,
+        })
+      ) {
+        return res.status(400).json({ message: 'Password is not strong enough' });
+      }
+
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(req.body.password, salt);
       updateData.password = hashedPassword;
