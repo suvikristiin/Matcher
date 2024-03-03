@@ -9,6 +9,10 @@ router.get('/matches', async (req, res) => {
     const authUserId = req.user._id;
     const authUser = await User.findById(authUserId);
 
+    if (!authUserId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
     if (!authUser) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -31,6 +35,9 @@ router.get('/matches', async (req, res) => {
 router.post('/messages', async (req, res) => {
   try {
     const authUserId = req.user._id;
+    if (!authUserId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
     const selectedMatchId = req.body.selectedMatch._id;
 
     // Find all messages between the authenticated user and the selected match
@@ -50,6 +57,10 @@ router.post('/messages', async (req, res) => {
 
 // Route to send a message from the authenticated user to a selected match
 router.post('/send-message', async (req, res) => {
+  if (!req.user._id) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
   try {
     // Create a new message
     const newMessage = new Message({

@@ -40,7 +40,7 @@ const LoginPage = () => {
       // Store the authentication token in localStorage
       localStorage.setItem('auth_token', responseJson.token);
       // If login is successful, redirect to the home page
-      window.location.href = '/home';
+      window.location.href = '/';
     } catch (error) {
       console.log('error', error);
       setErrorMessage(error.message);

@@ -8,6 +8,9 @@ import validator from 'validator';
 router.get('/profile', async (req, res) => {
   try {
     const userId = req.user._id;
+    if (!userId) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
     const user = await User.findById(userId, '-password');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -28,6 +31,9 @@ router.get('/profile', async (req, res) => {
 // Route to update the user's profile
 router.post('/update', async (req, res) => {
   const userId = req.user._id;
+  if (!userId) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
   console.log(userId);
   try {
     const updateData = {

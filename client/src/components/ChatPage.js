@@ -11,7 +11,7 @@ const ChatPage = () => {
 
   const auth_token = localStorage.getItem('auth_token');
 
-   // Fetches matches for the authenticated user
+  // Fetches matches for the authenticated user
   const fetchMatches = useCallback(async () => {
     try {
       const response = await fetch('/chats/matches', {
@@ -21,8 +21,10 @@ const ChatPage = () => {
         },
         mode: 'cors',
       });
-
-      if (!response.ok) {
+      if (response.status == 401) {
+        localStorage.removeItem('auth_token');
+        window.location.href = '/login';
+      } else if (!response.ok) {
         console.log(response);
         console.log(response.status);
         throw new Error('Failed to fetch a matches.');
@@ -40,7 +42,7 @@ const ChatPage = () => {
     fetchMatches();
   }, [fetchMatches]);
 
-    // Handles selecting a chat by updating state with the selected match
+  // Handles selecting a chat by updating state with the selected match
   const handleSelectedChat = (match) => {
     setSelectedMatchId(match._id);
     setSelectedMatch(match);

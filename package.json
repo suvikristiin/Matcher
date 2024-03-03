@@ -9,6 +9,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "install:backend": "cd backend && npm install",
     "install:client": "cd client && npm install",
+    "build":"cd client && npm run build",
     "setup": "npm run install:backend && npm run install:client",
     "lint": "eslint ."
   },

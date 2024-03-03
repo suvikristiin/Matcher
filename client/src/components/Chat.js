@@ -23,7 +23,10 @@ const Chat = (selectedMatch) => {
           body: JSON.stringify(selectedMatch),
           mode: 'cors',
         });
-        if (!response.ok) {
+        if (response.status == 401) {
+          localStorage.removeItem('auth_token');
+          window.location.href = '/login';
+        } else if (!response.ok) {
           throw new Error('Failed to fetch messages');
         }
         const data = await response.json();
@@ -53,8 +56,10 @@ const Chat = (selectedMatch) => {
         }),
         mode: 'cors',
       });
-
-      if (!response.ok) {
+      if (response.status == 401) {
+        localStorage.removeItem('auth_token');
+        window.location.href = '/login';
+      } else if (!response.ok) {
         throw new Error('Failed to send message');
       }
 

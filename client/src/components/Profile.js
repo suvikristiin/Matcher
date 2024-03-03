@@ -23,7 +23,10 @@ const Profile = () => {
           },
           mode: 'cors',
         });
-        if (!response.ok) {
+        if (response.status == 401) {
+          localStorage.removeItem('auth_token');
+          window.location.href = '/login';
+        } else if (!response.ok) {
           throw new Error('Failed to fetch user data');
         }
         console.log(response);
@@ -64,7 +67,10 @@ const Profile = () => {
         },
         body: JSON.stringify(user),
       });
-      if (!response.ok) {
+      if (response.status == 401) {
+        localStorage.removeItem('auth_token');
+        window.location.href = '/login';
+      } else if (!response.ok) {
         throw new Error('Failed to update user data');
       }
       const responseJson = await response.json();
