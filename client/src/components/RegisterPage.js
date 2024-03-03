@@ -47,10 +47,10 @@ const RegisterPage = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid id="registerBackground" item>
+      <Grid xs={12} md={6} id="registerBackground" item>
         <p id="registerLogo">Matcher</p>
       </Grid>
-      <Grid item id="registerFormGrid">
+      <Grid xs={12} md={6} item id="registerFormGrid">
         <form id="registerForm" onSubmit={handleRegistrationSubmit}>
           <Typography id="signupTitle">
             Sign up for the <span>Matcher...</span>

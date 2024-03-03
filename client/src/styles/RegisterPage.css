@@ -79,3 +79,24 @@ span {
 .customTextField .MuiOutlinedInput-root.Mui-focused fieldset {
   border-color: #fdc7c7;
 }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  #registerBackground {
+    background-image: linear-gradient(#fb4444, rgba(255, 255, 255, 0.7)), url('../images/love.png');
+    /* Ensure other background properties are reset if necessary */
+    background-size: auto;
+    background-position: initial;
+    background-repeat: repeat;
+    height: 22vh;
+  }
+
+  .customTextField,
+  #registerButton {
+    width: 100%; /* Full-width inputs and button on smaller screens */
+  }
+
+  #registerFormGrid {
+    height: 78vh;
+  }
+}

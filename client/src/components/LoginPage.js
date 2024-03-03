@@ -34,27 +34,25 @@ const LoginPage = () => {
       });
       const responseJson = await responseLogin.json();
       if (!responseLogin.ok) {
-        throw new Error(responseJson.message || 'Login failed. Please try again.'); 
+        throw new Error(responseJson.message || 'Login failed. Please try again.');
       }
-      
-   
-        // Store the authentication token in localStorage
-        localStorage.setItem('auth_token', responseJson.token);
-        // If login is successful, redirect to the home page
-        window.location.href = '/home';
-      
+
+      // Store the authentication token in localStorage
+      localStorage.setItem('auth_token', responseJson.token);
+      // If login is successful, redirect to the home page
+      window.location.href = '/home';
     } catch (error) {
       console.log('error', error);
-      setErrorMessage(error.message)
+      setErrorMessage(error.message);
     }
   };
 
   return (
     <Grid container spacing={2}>
-      <Grid id="loginBackground" item>
+      <Grid xs={12} md={6} id="loginBackground" item>
         <p id="loginLogo">Matcher</p>
       </Grid>
-      <Grid item id="loginFormGrid">
+      <Grid xs={12} md={6} item id="loginFormGrid">
         <form id="loginForm" onSubmit={handleLoginSubmit}>
           <Typography id="loginTitle">
             Log in to the <span>Matcher...</span>

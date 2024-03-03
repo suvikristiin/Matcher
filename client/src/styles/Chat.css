@@ -32,3 +32,31 @@
 .inputMessage .MuiOutlinedInput-root.Mui-focused fieldset {
   border-color: hsl(0, 0%, 92%);
 }
+
+
+
+@media (max-width: 799px) {
+  #newMessageForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 85%;
+  }
+
+  #submitMessage {
+    width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  #newMessageForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 85%;
+  }
+
+  #submitMessage {
+    width: 50%;
+  }
+}
