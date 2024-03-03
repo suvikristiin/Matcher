@@ -31,12 +31,22 @@
 #disLikeButton {
   width: 100px;
   height: 100px;
+  cursor: pointer;
+}
+
+#disLikeButton:hover {
+  transform: scale(1.1); 
 }
 
 #likeButton {
   width: 100px;
   height: 100px;
   color: #fb4444;
+  cursor: pointer;
+}
+
+#likeButton:hover {
+  transform: scale(1.1); 
 }
 
 #matchButtons {
@@ -60,7 +70,7 @@
 }
 
 #userCard-errorFetch {
-  display: flex;                                                   
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
