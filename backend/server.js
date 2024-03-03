@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import indexRouter from './routes/index.js';
 import homeRouter from './routes/home.js';
 import chatRouter from './routes/chat.js';
+import userRouter from './routes/user.js';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import './passport-config.js';
@@ -25,5 +26,6 @@ app.use('/', indexRouter);
 // Protect by JWT authentication via passport on the "/home" router
 app.use('/home', passport.authenticate('jwt', { session: false }), homeRouter);
 app.use('/chats', passport.authenticate('jwt', { session: false }), chatRouter);
+app.use('/user', passport.authenticate('jwt', { session: false }), userRouter);
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

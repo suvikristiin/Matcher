@@ -37,6 +37,10 @@ const DropDownMenu = () => {
     window.location.href = '/home';
   };
 
+  const handleProfilePage = () => {
+    window.location.href = '/profile';
+  };
+
   return (
     <>
       <Button
@@ -50,7 +54,7 @@ const DropDownMenu = () => {
       </Button>
       <Menu id="menuList" onClose={handleClose} open={open} anchorEl={anchorEl}>
         <MenuItem onClick={handleMainPage}>Main page</MenuItem>
-        <MenuItem>Edit your information</MenuItem>
+        <MenuItem onClick={handleProfilePage}>Edit your information</MenuItem>
         <MenuItem>Add new image</MenuItem>
         <MenuItem onClick={handleChats}>Chats</MenuItem>
         <MenuItem id="LogOutButton" onClick={handleLogout}>

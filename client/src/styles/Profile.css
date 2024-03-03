@@ -1,0 +1,16 @@
+#profileHeading {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff8686;
+}
+
+#updateProfile {
+  background-color: #fdc7c7;
+}
+
+.profileTextField .MuiInputLabel-root.Mui-focused {
+  color: #fb4444;
+}
+
+.profileTextField .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: #fdc7c7;
+}
