@@ -14,7 +14,8 @@ Create .env file in the root folder of the project and add SECRET as `SECRET=<my
 Then install the required dependencies by running in the root folder:
 ```
 npm install
-npm run setup
+npm run install:client
+npm run install:backend
 ```
 
 Now you can run the program in development mode:
