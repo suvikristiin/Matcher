@@ -9,9 +9,12 @@ Clone the repository and navigate to the project directory
 git clone https://github.com/suvikristiin/matcher.git
 ```
 
-Create .env file to the ./backend directory add and add SECRET as SECRET=<secret key>
+Create .env file in the root folder of the project and add SECRET as SECRET=<secret key>
 
-Then install the required dependencies by running npm install.
+Then install the required dependencies by running:
+```
+npm run setup
+```
 
 Now you can run the program in development mode:
 ```
